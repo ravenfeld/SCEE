@@ -12,7 +12,7 @@ class AddMtbScale : OsmFilterQuestType<MtbScale>() {
 
     override val elementFilter = """
         ways with
-          highway = path
+          highway ~ path|track
           and !mtb:scale
           and (!lit or lit = no)
           and surface ~ "grass|sand|dirt|soil|fine_gravel|compacted|wood|gravel|pebblestone|rock|ground|earth|mud|woodchips|snow|ice|salt|stone"
