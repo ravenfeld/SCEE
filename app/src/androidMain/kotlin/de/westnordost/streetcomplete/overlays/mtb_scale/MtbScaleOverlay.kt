@@ -34,10 +34,6 @@ class MtbScaleOverlay : Overlay, AndroidOverlay {
                 or bicycle ~ yes|permissive|designated
               )
               and mtb != no
-              and (
-                surface ~ ${UNPAVED_SURFACES.joinToString("|")}|wood
-                or (highway = track and tracktype and tracktype != grade1)
-              )
         """).map { it to getStyle(it) }
 
     override fun createForm(element: Element?) = MtbScaleOverlayForm()
@@ -45,23 +41,13 @@ class MtbScaleOverlay : Overlay, AndroidOverlay {
     private fun getStyle(element: Element): OverlayStyle {
         val mtbScale = parseMtbScale(element.tags)
         val color = mtbScale.color
-            ?: if (isMtbTaggingExpected(element)) OverlayColor.Red else null
+
         return OverlayStyle.Polyline(
-            stroke = color?.let { OverlayStyle.Stroke(it) },
+            stroke =  OverlayStyle.Stroke(color) ,
             label = mtbScale?.value?.toString()
         )
     }
 }
-
-private val mtbTaggingExpectedFilter by lazy { """
-    ways with
-      mtb ~ designated|yes
-      or mtb:scale:uphill
-      or mtb:scale:imba
-""".toElementFilterExpression() }
-
-private fun isMtbTaggingExpected(element: Element) =
-    mtbTaggingExpectedFilter.matches(element)
 
 private val MtbScale?.color get() = when (this?.value) {
     MtbScale.Value.ZERO -> OverlayColor.Blue
@@ -71,5 +57,5 @@ private val MtbScale?.color get() = when (this?.value) {
     MtbScale.Value.FOUR -> OverlayColor.Orange
     MtbScale.Value.FIVE -> OverlayColor.Purple
     MtbScale.Value.SIX -> OverlayColor.Black
-    else -> null
+    else -> OverlayColor.Red
 }

@@ -18,10 +18,12 @@ import de.westnordost.streetcomplete.overlays.cycleway.CyclewayOverlay
 import de.westnordost.streetcomplete.overlays.mtb_scale.MtbScaleOverlay
 import de.westnordost.streetcomplete.overlays.places.PlacesOverlay
 import de.westnordost.streetcomplete.overlays.restriction.RestrictionOverlay
+import de.westnordost.streetcomplete.overlays.sac_scale.SacScaleOverlay
 import de.westnordost.streetcomplete.overlays.sidewalk.SidewalkOverlay
 import de.westnordost.streetcomplete.overlays.street_parking.StreetParkingOverlay
 import de.westnordost.streetcomplete.overlays.surface.SurfaceOverlay
 import de.westnordost.streetcomplete.overlays.things.ThingsOverlay
+import de.westnordost.streetcomplete.overlays.trail_visibility.TrailVisibilityOverlay
 import de.westnordost.streetcomplete.overlays.way_lit.WayLitOverlay
 import de.westnordost.streetcomplete.util.ktx.getFeature
 import de.westnordost.streetcomplete.util.ktx.getIds
@@ -68,5 +70,7 @@ fun overlaysRegistry(
     7 to BuildingsOverlay(),
     9 to MtbScaleOverlay(),
 //    (EE_QUEST_OFFSET + 1) to RestrictionOverlay(),
+    (EE_QUEST_OFFSET + 2) to SacScaleOverlay(),
+    (EE_QUEST_OFFSET + 3) to TrailVisibilityOverlay(),
     (EE_QUEST_OFFSET + 0) to CustomOverlay(prefs),
 ))

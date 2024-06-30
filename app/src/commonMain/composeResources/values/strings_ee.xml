@@ -800,4 +800,11 @@ Out of the box SCEE is configured to behave very similar to StreetComplete.</str
     <string name="quest_fence_material_title">What material is this fence made of?</string>
     <string name="quest_material_wire">Wire</string>
 
+    <!-- mtb:scale scale -->
+    <string name="quest_mtbScale_title">"What is the MTB Scale of this path?"</string>
+
+    <!-- sac_scale overlay -->
+    <string name="overlay_sac_scale">Sac scale</string>
+
+    <string name="overlay_trail_visibility_title">Trail Visibility</string>
 </resources>

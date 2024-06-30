@@ -22,6 +22,7 @@ import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.overlays.mtb_scale.MtbScaleOverlay
+import de.westnordost.streetcomplete.overlays.sac_scale.SacScaleOverlay
 import de.westnordost.streetcomplete.overlays.street_parking.StreetParkingOverlay
 import de.westnordost.streetcomplete.overlays.surface.SurfaceOverlay
 import de.westnordost.streetcomplete.resources.*
@@ -29,6 +30,7 @@ import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
 import de.westnordost.streetcomplete.ui.theme.titleMedium
 import org.jetbrains.compose.resources.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import de.westnordost.streetcomplete.overlays.trail_visibility.TrailVisibilityOverlay
 
 /** List of overlays to individually enable or disable */
 @Composable
@@ -113,7 +115,9 @@ private fun PreviewOverlaySelectionList() {
         items = listOf(
             OverlaySelection(StreetParkingOverlay(), true),
             OverlaySelection(SurfaceOverlay(), false),
+            OverlaySelection(SacScaleOverlay(), false),
             OverlaySelection(MtbScaleOverlay(), false),
+            OverlaySelection(TrailVisibilityOverlay(), false),
         ),
         onSelect = { _, _ -> },
     )

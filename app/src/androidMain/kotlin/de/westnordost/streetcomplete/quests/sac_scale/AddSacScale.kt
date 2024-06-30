@@ -21,8 +21,10 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
+import de.westnordost.streetcomplete.osm.SacScale
+import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.surface.UNPAVED_SURFACES
 import de.westnordost.streetcomplete.quests.BooleanQuestSettingsDialog
 import de.westnordost.streetcomplete.quests.FullElementSelectionDialog
 import de.westnordost.streetcomplete.quests.getPrefixedFullElementSelectionPref
@@ -36,14 +38,21 @@ class AddSacScale : OsmElementQuestType<SacScale>, AndroidQuest {
 
     private val elementFilter = """
         ways with
-          highway ~ path
+          highway ~ path|track|bridleway
           and !sac_scale
-          and access !~ no|private
-          and foot !~ no|private
-          and (!lit or lit = no)
-          and surface ~ "grass|sand|dirt|soil|fine_gravel|compacted|wood|gravel|pebblestone|rock|ground|earth|mud|woodchips|snow|ice|salt|stone"
-    """
-    private val filter by lazy { prefs.getString(getPrefixedFullElementSelectionPref(prefs), elementFilter).toElementFilterExpression() }
+          and (
+                access !~ no|private
+                or foot ~ yes|permissive|designated
+              )
+
+          and surface ~ ${UNPAVED_SURFACES.joinToString("|")}|wood
+        """
+    private val filter by lazy {
+        prefs.getString(
+            getPrefixedFullElementSelectionPref(prefs),
+            elementFilter
+        ).toElementFilterExpression()
+    }
 
     override val changesetComment = "Specify SAC Scale"
     override val wikiLink = "Key:sac_scale"
@@ -72,13 +81,19 @@ class AddSacScale : OsmElementQuestType<SacScale>, AndroidQuest {
 
     override fun createForm() = AddSacScaleForm()
 
-    override fun applyAnswerTo(answer: SacScale, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+    override fun applyAnswerTo(
+        answer: SacScale,
+        tags: Tags,
+        geometry: ElementGeometry,
+        timestampEdited: Long
+    ) {
         tags["sac_scale"] = answer.osmValue
     }
 
     override val hasQuestSettings: Boolean = true
 
-    @Composable override fun QuestSettings(onDismissRequest: () -> Unit) {
+    @Composable
+    override fun QuestSettings(onDismissRequest: () -> Unit) {
         var showResurveySelection by remember { mutableStateOf(false) }
         var showElementSelection by remember { mutableStateOf(false) }
         InfoDialog(
@@ -114,7 +129,8 @@ class AddSacScale : OsmElementQuestType<SacScale>, AndroidQuest {
             ) { showElementSelection = false }
     }
 
-    private val isSacScaleWithoutRelation = prefs.getBoolean(questPrefix(prefs) + PREF_SAC_SCALE_WITHOUT_RELATION, false)
+    private val isSacScaleWithoutRelation =
+        prefs.getBoolean(questPrefix(prefs) + PREF_SAC_SCALE_WITHOUT_RELATION, false)
 
     private fun MapData.getAllWayInRelation(id: Long): List<Way> {
         val mutableList = mutableListOf<Way>()

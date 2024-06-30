@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.sac_scale
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import de.westnordost.streetcomplete.osm.SacScale
 import de.westnordost.streetcomplete.quests.AItemSelectQuestForm
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithDescription
 import kotlinx.serialization.serializer

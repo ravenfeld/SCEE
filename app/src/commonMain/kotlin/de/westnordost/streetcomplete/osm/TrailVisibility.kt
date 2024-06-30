@@ -1,7 +1,7 @@
-package de.westnordost.streetcomplete.quests.trail_visibility
+package de.westnordost.streetcomplete.osm
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.trail_visibility.TrailVisibility.*
+import de.westnordost.streetcomplete.osm.TrailVisibility.*
 
 enum class TrailVisibility(val osmValue: String) {
     EXCELLENT("excellent"),

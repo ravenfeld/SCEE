@@ -3,6 +3,9 @@ package de.westnordost.streetcomplete.quests.trail_visibility
 import android.os.Bundle
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
+import de.westnordost.streetcomplete.osm.TrailVisibility
+import de.westnordost.streetcomplete.osm.descriptionResId
+import de.westnordost.streetcomplete.osm.titleResId
 import de.westnordost.streetcomplete.quests.AItemSelectQuestForm
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithDescription
 import kotlinx.serialization.serializer
