@@ -707,4 +707,6 @@ Out of the box SCEE is configured to behave very similar to StreetComplete.</str
     <string name="quest_mtbScale_six_description">"Classify ways with 6 that are not rideable at all for a mtbiker. E.g. Chains or stemples (metal rungs) on a via ferrata or simply unsecured alpine pathes that are not even partly rideable for the very best mtbikers (using trial techniques). Steepness is often >45°.
 If used for single points, then this highlights exceptionally difficult spots. Often spotting is impossible and falling may be lethal."</string>
 
+    <!-- surface -->
+    <string name="quest_surface_value_chipseal">"Chipseal"</string>
 </resources>
