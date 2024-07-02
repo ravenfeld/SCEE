@@ -709,4 +709,7 @@ If used for single points, then this highlights exceptionally difficult spots. O
 
     <!-- surface -->
     <string name="quest_surface_value_chipseal">"Chipseal"</string>
+
+    <string name="background_type_custom">Custom</string>
+
 </resources>
