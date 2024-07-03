@@ -671,4 +671,7 @@ Out of the box SCEE is configured to behave very similar to StreetComplete.</str
     <!-- actually there are still SC translations available, as only the main string has been removed from SC. -->
     <string name="close">Close</string>
 
+    <string name="pref_quest_pedestrian_crossing_markings_extended_title">Extension of \"Does this crossing have markings on the ground?\"</string>
+    <string name="pref_quest_pedestrian_crossing_markings_extended_summary">Allows you to define the style of road markings</string>
+
 </resources>

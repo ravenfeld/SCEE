@@ -41,4 +41,11 @@
         android:defaultValue="true"
         android:persistent="true" />
 
+    <SwitchPreference
+        android:key="quest_pedestrian_crossing_markings_extended"
+        android:title="@string/pref_quest_pedestrian_crossing_markings_extended_title"
+        android:summary="@string/pref_quest_pedestrian_crossing_markings_extended_summary"
+        android:defaultValue="false"
+        android:persistent="true" />
+
 </PreferenceScreen>
