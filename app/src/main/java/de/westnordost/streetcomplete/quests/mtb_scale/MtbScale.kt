@@ -1,19 +1,60 @@
 package de.westnordost.streetcomplete.quests.mtb_scale
 
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import de.westnordost.streetcomplete.R
 
 import de.westnordost.streetcomplete.view.image_select.GroupableDisplayItem
 import de.westnordost.streetcomplete.view.image_select.Item
-import de.westnordost.streetcomplete.quests.mtb_scale.MtbScale.*
 
-enum class MtbScale(val osmValue: String) {
-    ZERO("0"),
-    ONE("1"),
-    TWO("2"),
-    THREE("3"),
-    FOUR("4"),
-    FIVE("5"),
-    SIX("6")
+enum class MtbScale(
+    val osmValue: String,
+    @DrawableRes val imageResId: Int?,
+    @StringRes val titleResId: Int,
+    @StringRes val descriptionResId: Int,
+) {
+    ZERO(
+        osmValue = "0",
+        imageResId = R.drawable.mtb_scale_0,
+        titleResId = R.string.quest_mtbScale_zero,
+        descriptionResId = R.string.quest_mtbScale_zero_description
+    ),
+    ONE(
+        osmValue = "1",
+        imageResId = R.drawable.mtb_scale_1,
+        titleResId = R.string.quest_mtbScale_one,
+        descriptionResId = R.string.quest_mtbScale_one_description
+    ),
+    TWO(
+        osmValue = "2",
+        imageResId = R.drawable.mtb_scale_2,
+        titleResId = R.string.quest_mtbScale_two,
+        descriptionResId = R.string.quest_mtbScale_two_description
+    ),
+    THREE(
+        osmValue = "3",
+        imageResId = R.drawable.mtb_scale_3,
+        titleResId = R.string.quest_mtbScale_three,
+        descriptionResId = R.string.quest_mtbScale_three_description
+    ),
+    FOUR(
+        osmValue = "4",
+        imageResId = R.drawable.mtb_scale_4,
+        titleResId = R.string.quest_mtbScale_four,
+        descriptionResId = R.string.quest_mtbScale_four_description
+    ),
+    FIVE(
+        osmValue = "5",
+        imageResId = R.drawable.mtb_scale_5,
+        titleResId = R.string.quest_mtbScale_five,
+        descriptionResId = R.string.quest_mtbScale_five_description
+    ),
+    SIX(
+        osmValue = "6",
+        imageResId = null,
+        titleResId = R.string.quest_mtbScale_six,
+        descriptionResId = R.string.quest_mtbScale_six_description
+    )
 }
 
 fun Collection<MtbScale>.toItems() = map { it.asItem() }
@@ -26,36 +67,3 @@ fun MtbScale.asItem(): GroupableDisplayItem<MtbScale> {
         descriptionId = descriptionResId
     )
 }
-
-private val MtbScale.imageResId: Int?
-    get() = when (this) {
-        ZERO -> R.drawable.mtb_scale_0
-        ONE -> R.drawable.mtb_scale_1
-        TWO -> R.drawable.mtb_scale_2
-        THREE -> R.drawable.mtb_scale_3
-        FOUR -> R.drawable.mtb_scale_4
-        FIVE -> R.drawable.mtb_scale_5
-        SIX -> null
-    }
-
-private val MtbScale.titleResId: Int
-    get() = when (this) {
-        ZERO -> R.string.quest_mtbScale_zero
-        ONE -> R.string.quest_mtbScale_one
-        TWO -> R.string.quest_mtbScale_two
-        THREE -> R.string.quest_mtbScale_three
-        FOUR -> R.string.quest_mtbScale_four
-        FIVE -> R.string.quest_mtbScale_five
-        SIX -> R.string.quest_mtbScale_six
-    }
-
-private val MtbScale.descriptionResId: Int
-    get() = when (this) {
-        ZERO -> R.string.quest_mtbScale_zero_description
-        ONE -> R.string.quest_mtbScale_one_description
-        TWO -> R.string.quest_mtbScale_two_description
-        THREE -> R.string.quest_mtbScale_three_description
-        FOUR -> R.string.quest_mtbScale_four_description
-        FIVE -> R.string.quest_mtbScale_five_description
-        SIX -> R.string.quest_mtbScale_six_description
-    }
