@@ -770,4 +770,8 @@ If used for single points, then this highlights exceptionally difficult spots. O
     <string name="quest_building_material_value_metal_plates">Metal_plates</string>
     <string name="quest_building_material_value_bamboo">Bamboo</string>
     <string name="quest_building_material_value_adobe">Adobe</string>
+
+    <string name="pref_quest_pedestrian_crossing_markings_extended_title">Extension of \"Does this crossing have markings on the ground?\"</string>
+    <string name="pref_quest_pedestrian_crossing_markings_extended_summary">Allows you to define the style of road markings</string>
+
 </resources>

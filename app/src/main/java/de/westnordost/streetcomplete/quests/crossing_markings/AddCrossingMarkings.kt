@@ -9,19 +9,19 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isCrossing
-import de.westnordost.streetcomplete.quests.YesNoQuestForm
-import de.westnordost.streetcomplete.util.ktx.toYesNo
 
-class AddCrossingMarkings : OsmElementQuestType<Boolean> {
+class AddCrossingMarkings : OsmElementQuestType<CrossingMarkings> {
 
-    private val crossingFilter by lazy { """
+    private val crossingFilter by lazy {
+        """
         nodes with
           highway = crossing
           and foot != no
           and !crossing:markings
           and (!crossing or crossing = island)
           and (!crossing:signals or crossing:signals = no)
-    """.toElementFilterExpression() }
+    """.toElementFilterExpression()
+    }
     /* only looking for crossings that have no crossing=* at all set because if the crossing was
      * - if it had markings, it would be tagged with "marked","zebra" or "uncontrolled"
      * - if it hadn't, it would be tagged with "unmarked"
@@ -29,11 +29,13 @@ class AddCrossingMarkings : OsmElementQuestType<Boolean> {
      *   it would be spammy to ask about markings because the answer would almost always be "yes".
      *   Might differ per country, research necessary. */
 
-    private val excludedWaysFilter by lazy { """
+    private val excludedWaysFilter by lazy {
+        """
         ways with
           highway and access ~ private|no
           or highway = service and service = driveway
-    """.toElementFilterExpression() }
+    """.toElementFilterExpression()
+    }
 
     override val changesetComment = "Specify whether pedestrian crossings have markings"
     override val wikiLink = "Key:crossing:markings"
@@ -57,10 +59,20 @@ class AddCrossingMarkings : OsmElementQuestType<Boolean> {
     override fun isApplicableTo(element: Element): Boolean? =
         if (!crossingFilter.matches(element)) false else null
 
-    override fun createForm() = YesNoQuestForm()
+    override fun createForm() =
+        if (prefs.getBoolean("quest_pedestrian_crossing_markings_extended", false)) {
+            AddCrossingMarkingsForm()
+        } else {
+            AddCrossingMarkingsYesNoForm()
+        }
 
-    override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        tags["crossing:markings"] = answer.toYesNo()
+    override fun applyAnswerTo(
+        answer: CrossingMarkings,
+        tags: Tags,
+        geometry: ElementGeometry,
+        timestampEdited: Long
+    ) {
+        tags["crossing:markings"] = answer.osmValue
         /* We only tag yes/no, however, in countries where depending on the kind of marking,
          * different traffic rules apply, it makes sense to ask which marking it is. But to know
          * which kinds exist per country needs research. (Whose results should be added to the
