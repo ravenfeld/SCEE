@@ -242,19 +242,30 @@ fun showOverlayCustomizer(
 // title is invalid resId 0
 // name and wikiLink are the overlay index as stored in shared preferences
 // changesetComment is the overlay title
-fun getFakeCustomOverlays(prefs: ObservableSettings, ctx: Context, onlyIfExpertMode: Boolean = true): List<Overlay> {
+fun getFakeCustomOverlays(
+    prefs: ObservableSettings,
+    ctx: Context,
+    onlyIfExpertMode: Boolean = true
+): List<Overlay> {
     if (onlyIfExpertMode && !prefs.getBoolean(Prefs.EXPERT_MODE, false)) return emptyList()
     return prefs.getString(Prefs.CUSTOM_OVERLAY_INDICES, "0").split(",").mapNotNull { index ->
         val i = index.toIntOrNull() ?: return@mapNotNull null
         CustomOverlay(
-            prefs=prefs,
-            name = CustomOverlay::class.simpleName +"_"+ index, // allows to uniquely identify an overlay
-                title = 0, // use invalid resId placeholder, the adapter needs to be aware of this
+            prefs = prefs,
+            title = 0, // use invalid resId placeholder, the adapter needs to be aware of this
             icon = ctx.resources.getIdentifier(
-                prefs.getString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_ICON, i), "ic_custom_overlay"),
+                prefs.getString(
+                    getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_ICON, i),
+                    "ic_custom_overlay"
+                ),
                 "drawable", ctx.packageName
             ).takeIf { it != 0 } ?: R.drawable.ic_custom_overlay,
-            changesetComment = prefs.getString(getIndexedCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_NAME, i), "")
+            changesetComment = prefs.getString(
+                getIndexedCustomOverlayPref(
+                    Prefs.CUSTOM_OVERLAY_IDX_NAME,
+                    i
+                ), ""
+            )
                 .ifBlank { ctx.getString(R.string.custom_overlay_title) }, // displayed overlay name
             wikiLink = index
         )

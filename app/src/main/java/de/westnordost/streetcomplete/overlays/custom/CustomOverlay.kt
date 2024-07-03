@@ -25,7 +25,6 @@ import de.westnordost.streetcomplete.util.ktx.isArea
 
 class CustomOverlay(
     val prefs: ObservableSettings,
-    override val name: String = CustomOverlay::class.simpleName.toString(),
     @StringRes override val title: Int = R.string.custom_overlay_title,
     @DrawableRes override val icon: Int = R.drawable.ic_custom_overlay,
     override val changesetComment: String = "Edit user-defined element selection",
