@@ -672,7 +672,7 @@ Out of the box SCEE is configured to behave very similar to StreetComplete.</str
     <string name="close">Close</string>
 
     <!-- quest crossing marking -->
-    <string name="pref_quest_pedestrian_crossing_markings_extended">Enable extension of \"Does this crossing have markings on the ground?\", allows you to define the style of road markings</string>
+    <string name="pref_quest_pedestrian_crossing_markings_extended">Enable extension of \"Does this crossing have markings on the ground?\", allows you to define the style of crossing markings</string>
     <string name="quest_crossing_marking_value_no">No</string>
     <string name="quest_crossing_marking_value_zebra">Zebra</string>
     <string name="quest_crossing_marking_value_lines">Lines</string>
