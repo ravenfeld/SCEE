@@ -773,7 +773,7 @@ If used for single points, then this highlights exceptionally difficult spots. O
     <string name="quest_building_material_value_adobe">Adobe</string>
 
     <!-- quest crossing marking -->
-    <string name="pref_quest_pedestrian_crossing_markings_extended">Enable extension of \"Does this crossing have markings on the ground?\", allows you to define the style of road markings</string>
+    <string name="pref_quest_pedestrian_crossing_markings_extended">Enable extension of \"Does this crossing have markings on the ground?\", allows you to define the style of crossing markings</string>
     <string name="quest_crossing_marking_value_no">No</string>
     <string name="quest_crossing_marking_value_zebra">Zebra</string>
     <string name="quest_crossing_marking_value_lines">Lines</string>
