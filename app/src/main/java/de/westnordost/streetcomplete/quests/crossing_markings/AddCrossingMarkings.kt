@@ -95,7 +95,7 @@ class AddCrossingMarkings : OsmElementQuestType<CrossingMarkings> {
             .create()
 
     private val isCrossingMarkingExtended
-        get() = prefs.getBoolean("quest_pedestrian_crossing_markings_extended", false)
+        get() = prefs.getBoolean(PREF_CROSSING_MARKING_EXTENDED, false)
 
     private val crossingMarkingExpression: String
         get() =
