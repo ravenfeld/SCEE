@@ -11,8 +11,10 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isCrossing
+import de.westnordost.streetcomplete.osm.updateCheckDate
 
-private const val PREF_CROSSING_MARKING_EXTENDED="quest_pedestrian_crossing_markings_extended"
+private const val PREF_CROSSING_MARKING_EXTENDED = "quest_pedestrian_crossing_markings_extended"
+
 class AddCrossingMarkings : OsmElementQuestType<CrossingMarkings> {
 
     private val crossingFilter
@@ -76,21 +78,25 @@ class AddCrossingMarkings : OsmElementQuestType<CrossingMarkings> {
         timestampEdited: Long
     ) {
         tags["crossing:markings"] = answer.osmValue
+        if (isCrossingMarkingExtended) {
+            tags.updateCheckDate()
+        }
         /* We only tag yes/no, however, in countries where depending on the kind of marking,
          * different traffic rules apply, it makes sense to ask which marking it is. But to know
          * which kinds exist per country needs research. (Whose results should be added to the
          * wiki page for crossing:markings first) */
     }
+
     override val hasQuestSettings: Boolean = true
 
     override fun getQuestSettingsDialog(context: Context): AlertDialog =
         AlertDialog.Builder(context)
             .setMessage(R.string.pref_quest_pedestrian_crossing_markings_extended)
             .setPositiveButton(R.string.quest_generic_hasFeature_yes) { _, _ ->
-                prefs.edit().putBoolean(PREF_CROSSING_MARKING_EXTENDED,true).apply()
+                prefs.edit().putBoolean(PREF_CROSSING_MARKING_EXTENDED, true).apply()
             }
             .setNegativeButton(R.string.quest_generic_hasFeature_no) { _, _ ->
-                prefs.edit().putBoolean(PREF_CROSSING_MARKING_EXTENDED,false).apply()
+                prefs.edit().putBoolean(PREF_CROSSING_MARKING_EXTENDED, false).apply()
             }
             .create()
 
