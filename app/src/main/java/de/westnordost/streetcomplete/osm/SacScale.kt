@@ -1,9 +1,8 @@
-package de.westnordost.streetcomplete.quests.sac_scale
+package de.westnordost.streetcomplete.osm
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.sac_scale.SacScale.*
 import de.westnordost.streetcomplete.view.image_select.GroupableDisplayItem
 import de.westnordost.streetcomplete.view.image_select.Item
 

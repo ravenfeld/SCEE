@@ -2,8 +2,9 @@ package de.westnordost.streetcomplete.quests.sac_scale
 
 import android.os.Bundle
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.osm.SacScale
+import de.westnordost.streetcomplete.osm.toItems
 import de.westnordost.streetcomplete.quests.AImageListQuestForm
-import de.westnordost.streetcomplete.quests.via_ferrata_scale.ViaFerrataScale
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 
 class AddSacScaleForm : AImageListQuestForm<SacScale, SacScale>() {
