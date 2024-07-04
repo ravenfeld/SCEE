@@ -671,6 +671,21 @@ Out of the box SCEE is configured to behave very similar to StreetComplete.</str
     <!-- actually there are still SC translations available, as only the main string has been removed from SC. -->
     <string name="close">Close</string>
 
+    <!-- quest crossing marking -->
     <string name="pref_quest_pedestrian_crossing_markings_extended">Enable extension of \"Does this crossing have markings on the ground?\", allows you to define the style of road markings</string>
+    <string name="quest_crossing_marking_value_no">No</string>
+    <string name="quest_crossing_marking_value_zebra">Zebra</string>
+    <string name="quest_crossing_marking_value_lines">Lines</string>
+    <string name="quest_crossing_marking_value_ladder">Ladder</string>
+    <string name="quest_crossing_marking_value_dashes">Dashes</string>
+    <string name="quest_crossing_marking_value_dots">Dots</string>
+    <string name="quest_crossing_marking_value_surface">Surface</string>
+    <string name="quest_crossing_marking_value_ladder_skewed">Ladder skewed</string>
+    <string name="quest_crossing_marking_value_zebra_paired">Zebra paired</string>
+    <string name="quest_crossing_marking_value_zebra_bicolour">Zebra bicolour</string>
+    <string name="quest_crossing_marking_value_zebra_double">Zebra double</string>
+    <string name="quest_crossing_marking_value_ladder_paired">Ladder paired</string>
+    <string name="quest_crossing_marking_value_zebra_dots">Zebra + dots</string>
+    <string name="quest_crossing_marking_value_pictograms">Pictograms</string>
 
 </resources>

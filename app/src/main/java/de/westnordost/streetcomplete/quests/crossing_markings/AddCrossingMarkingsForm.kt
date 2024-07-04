@@ -10,7 +10,7 @@ class AddCrossingMarkingsForm : AImageListQuestForm<CrossingMarkings, CrossingMa
         .filter { it!=CrossingMarkings.YES }
         .map { it.asItem() }
 
-    override val itemsPerRow = 4
+    override val itemsPerRow = 3
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
