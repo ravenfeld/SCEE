@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.overlays.sac_scale
+package de.westnordost.streetcomplete.overlays.mtb_scale
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,27 +6,27 @@ import android.widget.TextView
 import androidx.core.view.children
 import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.osm.SacScale
+import de.westnordost.streetcomplete.osm.MtbScale
 import de.westnordost.streetcomplete.osm.asItem
 import de.westnordost.streetcomplete.osm.toItems
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
 import de.westnordost.streetcomplete.view.image_select.ItemViewHolder
 
-class SacScaleViewController(
+class MtbScaleViewController(
     private val selectButton: ViewGroup,
     private val selectedCellView: ViewGroup,
     private val selectTextView: TextView,
 ) {
-    var value: SacScale?
+    var value: MtbScale?
         set(value) {
-            selectedSacScaleItem = value?.asItem()
+            selectedMtbScaleItem = value?.asItem()
         }
         get() {
-            return selectedSacScaleItem?.value
+            return selectedMtbScaleItem?.value
         }
 
-    private var selectedSacScaleItem: DisplayItem<SacScale>? = null
+    private var selectedMtbScaleItem: DisplayItem<MtbScale>? = null
         set(value) {
             field = value
             updateSelectedCell()
@@ -34,14 +34,14 @@ class SacScaleViewController(
 
     private val cellLayoutId: Int = R.layout.cell_labeled_icon_select
     private val dialogCellLayoutId: Int = R.layout.cell_labeled_icon_select_sac_scale
-    private val items: List<DisplayItem<SacScale>> = SacScale.entries.toItems()
+    private val items: List<DisplayItem<MtbScale>> = MtbScale.entries.toItems()
 
     var onInputChanged: (() -> Unit)? = null
 
     init {
         selectButton.setOnClickListener {
-            collectSacScaleData { sacScale: SacScale ->
-                selectedSacScaleItem = sacScale.asItem()
+            collectMtbScaleData { sacScale: MtbScale ->
+                selectedMtbScaleItem = sacScale.asItem()
                 onInputChanged?.invoke()
             }
         }
@@ -51,7 +51,7 @@ class SacScaleViewController(
     }
 
     private fun updateSelectedCell() {
-        val item = selectedSacScaleItem
+        val item = selectedMtbScaleItem
         selectTextView.isGone = item != null
         selectedCellView.isGone = item == null
         if (item != null) {
@@ -59,7 +59,7 @@ class SacScaleViewController(
         }
     }
 
-    private fun collectSacScaleData(callback: (SacScale) -> Unit) {
+    private fun collectMtbScaleData(callback: (MtbScale) -> Unit) {
         ImageListPickerDialog(selectButton.context, items, dialogCellLayoutId, 1) { item ->
             callback(item.value!!)
         }.show()

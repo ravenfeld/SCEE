@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.overlays.sac_scale
+package de.westnordost.streetcomplete.overlays.mtb_scale
 
 import android.content.Context
 import android.os.Bundle
@@ -8,39 +8,40 @@ import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
-import de.westnordost.streetcomplete.databinding.FragmentOverlaySacScaleSelectBinding
+import de.westnordost.streetcomplete.databinding.FragmentOverlayMtbScaleSelectBinding
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
-import de.westnordost.streetcomplete.osm.SacScale
+import de.westnordost.streetcomplete.osm.MtbScale
 import de.westnordost.streetcomplete.osm.asItem
 import de.westnordost.streetcomplete.util.LastPickedValuesStore
 import de.westnordost.streetcomplete.util.ktx.valueOfOrNull
+import de.westnordost.streetcomplete.util.logs.Log
 import de.westnordost.streetcomplete.view.setImage
 import org.koin.android.ext.android.inject
 
-class SacScaleOverlayForm : AbstractOverlayForm() {
+class MtbScaleOverlayForm : AbstractOverlayForm() {
 
-    override val contentLayoutResId = R.layout.fragment_overlay_sac_scale_select
-    private val binding by contentViewBinding(FragmentOverlaySacScaleSelectBinding::bind)
+    override val contentLayoutResId = R.layout.fragment_overlay_mtb_scale_select
+    private val binding by contentViewBinding(FragmentOverlayMtbScaleSelectBinding::bind)
 
-    private var originalSacScale: SacScale? = null
+    private var originalMtbScale: MtbScale? = null
 
-    private lateinit var sacScaleCtrl: SacScaleViewController
+    private lateinit var mtbScaleCtrl: MtbScaleViewController
     private val prefs: ObservableSettings by inject()
-    private lateinit var favs: LastPickedValuesStore<SacScale>
-    private val lastPickedSacScale: SacScale?
+    private lateinit var favs: LastPickedValuesStore<MtbScale>
+    private val lastPickedMtbScale: MtbScale?
         get() = favs.get().firstOrNull()
 
-    override fun hasChanges(): Boolean = sacScaleCtrl.value != originalSacScale
+    override fun hasChanges(): Boolean = mtbScaleCtrl.value != originalMtbScale
 
-    override fun isFormComplete(): Boolean = sacScaleCtrl.value != null
+    override fun isFormComplete(): Boolean = mtbScaleCtrl.value != null
 
     override fun onClickOk() {
         val changesBuilder = StringMapChangesBuilder(element!!.tags)
 
-        if (sacScaleCtrl.value != null) {
-            favs.add(sacScaleCtrl.value!!)
+        if (mtbScaleCtrl.value != null) {
+            favs.add(mtbScaleCtrl.value!!)
         }
-        changesBuilder["sac_scale"] = sacScaleCtrl.value!!.osmValue
+        changesBuilder["mtb:scale"] = mtbScaleCtrl.value!!.osmValue
 
         applyEdit(UpdateElementTagsAction(element!!, changesBuilder.create()))
     }
@@ -52,30 +53,31 @@ class SacScaleOverlayForm : AbstractOverlayForm() {
             prefs,
             key = javaClass.simpleName,
             serialize = { it.name },
-            deserialize = { valueOfOrNull<SacScale>(it) }
+            deserialize = { valueOfOrNull<MtbScale>(it) }
         )
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        originalSacScale = SacScale.entries.find { it.osmValue == element!!.tags["sac_scale"] }
+        originalMtbScale = MtbScale.entries.find { it.osmValue == element!!.tags["mtb:scale"]?.take(1) }
+        Log.e("TEST","originalMtbScale $originalMtbScale ${element!!.tags["mtb:scale"]}")
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        sacScaleCtrl = SacScaleViewController(
+        mtbScaleCtrl = MtbScaleViewController(
             selectButton = binding.selectButton.root,
             selectedCellView = binding.selectButton.selectedCellView,
             selectTextView = binding.selectButton.selectTextView,
         )
-        sacScaleCtrl.onInputChanged = { checkIsFormComplete() }
+        mtbScaleCtrl.onInputChanged = { checkIsFormComplete() }
 
-        binding.lastPickedButton.isGone = lastPickedSacScale == null
-        binding.lastPickedButton.setImage(lastPickedSacScale?.asItem()?.image)
+        binding.lastPickedButton.isGone = lastPickedMtbScale == null
+        binding.lastPickedButton.setImage(lastPickedMtbScale?.asItem()?.image)
         binding.lastPickedButton.setOnClickListener {
-            sacScaleCtrl.value = lastPickedSacScale
+            mtbScaleCtrl.value = lastPickedMtbScale
             binding.lastPickedButton.isGone = true
             checkIsFormComplete()
         }
@@ -91,19 +93,19 @@ class SacScaleOverlayForm : AbstractOverlayForm() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putString(SAC_SCALE, sacScaleCtrl.value?.osmValue)
+        outState.putString(MTB_SCALE, mtbScaleCtrl.value?.osmValue)
 
     }
 
     private fun onLoadInstanceState(inState: Bundle) {
-        sacScaleCtrl.value = SacScale.entries.find { it.osmValue == inState.getString(SAC_SCALE) }
+        mtbScaleCtrl.value = MtbScale.entries.find { it.osmValue == inState.getString(MTB_SCALE) }
     }
 
     private fun initStateFromTags() {
-        sacScaleCtrl.value = originalSacScale
+        mtbScaleCtrl.value = originalMtbScale
     }
 
     companion object {
-        private const val SAC_SCALE = "selected_sac_scale"
+        private const val MTB_SCALE = "selected_mtb_scale"
     }
 }

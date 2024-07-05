@@ -15,6 +15,7 @@ import de.westnordost.streetcomplete.overlays.custom.CustomOverlay
 import de.westnordost.streetcomplete.overlays.address.AddressOverlay
 import de.westnordost.streetcomplete.overlays.buildings.BuildingsOverlay
 import de.westnordost.streetcomplete.overlays.cycleway.CyclewayOverlay
+import de.westnordost.streetcomplete.overlays.mtb_scale.MtbScaleOverlay
 import de.westnordost.streetcomplete.overlays.places.PlacesOverlay
 import de.westnordost.streetcomplete.overlays.restriction.RestrictionOverlay
 import de.westnordost.streetcomplete.overlays.sac_scale.SacScaleOverlay
@@ -68,5 +69,6 @@ fun overlaysRegistry(
     7 to BuildingsOverlay(),
     (EE_QUEST_OFFSET + 1) to RestrictionOverlay(),
     (EE_QUEST_OFFSET + 2) to SacScaleOverlay(),
+    (EE_QUEST_OFFSET + 3) to MtbScaleOverlay(),
     (EE_QUEST_OFFSET + 0) to CustomOverlay(prefs),
 ))

@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.mtb_scale
+package de.westnordost.streetcomplete.osm
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes

@@ -2,6 +2,8 @@ package de.westnordost.streetcomplete.quests.mtb_scale
 
 import android.os.Bundle
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.osm.MtbScale
+import de.westnordost.streetcomplete.osm.toItems
 import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 
