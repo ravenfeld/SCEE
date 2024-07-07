@@ -52,7 +52,7 @@ enum class MtbScale(
     ),
     SIX(
         osmValue = "6",
-        imageResId = null,
+        imageResId = R.drawable.mtb_scale_6,
         titleResId = R.string.quest_mtbScale_six,
         descriptionResId = R.string.quest_mtbScale_six_description
     )
