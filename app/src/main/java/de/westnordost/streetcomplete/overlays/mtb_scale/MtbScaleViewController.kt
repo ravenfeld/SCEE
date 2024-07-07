@@ -33,7 +33,7 @@ class MtbScaleViewController(
         }
 
     private val cellLayoutId: Int = R.layout.cell_labeled_icon_select
-    private val dialogCellLayoutId: Int = R.layout.cell_labeled_icon_select_sac_scale
+    private val dialogCellLayoutId: Int = R.layout.cell_labeled_icon_select_mtb_scale
     private val items: List<DisplayItem<MtbScale>> = MtbScale.entries.toItems()
 
     var onInputChanged: (() -> Unit)? = null

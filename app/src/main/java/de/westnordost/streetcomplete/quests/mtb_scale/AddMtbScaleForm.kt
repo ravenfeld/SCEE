@@ -16,7 +16,7 @@ class AddMtbScaleForm : AImageListQuestForm<MtbScale, MtbScale>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        imageSelector.cellLayoutId = R.layout.cell_labeled_icon_select_via_mtb_scale
+        imageSelector.cellLayoutId = R.layout.cell_labeled_icon_select_mtb_scale
     }
 
     override fun onClickOk(selectedItems: List<MtbScale>) {

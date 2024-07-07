@@ -689,7 +689,7 @@ Out of the box SCEE is configured to behave very similar to StreetComplete.</str
     <string name="quest_sacScale_six">"T6 - difficult alpine hiking"</string>
     <string name="quest_sacScale_six_description">"Severe exposure. Difficult craggy terrain. Glaciers with high risk of sliding."</string>
 
-    <!-- via mtb:scale scale -->
+    <!-- mtb:scale scale -->
     <string name="quest_mtbScale_title">"What is the MTB Scale of this path?"</string>
     <string name="default_disabled_msg_mtbScale">"This quest type is disabled by default because the rating of mountain bike difficulty is highly subjective and needs expert knowledge in the used grading systems."</string>
     <string name="quest_mtbScale_zero">"Grade 0"</string>
