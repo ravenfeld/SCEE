@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isCrossing
-import de.westnordost.streetcomplete.osm.updateCheckDate
+import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 
 private const val PREF_CROSSING_MARKING_EXTENDED = "quest_pedestrian_crossing_markings_extended"
 
@@ -79,7 +79,7 @@ class AddCrossingMarkings : OsmElementQuestType<CrossingMarkings> {
     ) {
         tags["crossing:markings"] = answer.osmValue
         if (isCrossingMarkingExtended) {
-            tags.updateCheckDate()
+            tags.updateCheckDateForKey("check_date:crossing")
         }
         /* We only tag yes/no, however, in countries where depending on the kind of marking,
          * different traffic rules apply, it makes sense to ask which marking it is. But to know
