@@ -1776,18 +1776,18 @@ Alternatively, you can leave a note (with a photo)."</string>
     <!-- mtb:scale -->
     <string name="overlay_mtb_scale">Mtb scale</string>
     <string name="overlay_mtbScale_zero">"Grade 0"</string>
-    <string name="overlay_mtbScale_zero_description">"Gravel or packed earth. No obstacles, easy curves, moderate slope. No special skills needed."</string>
+    <string name="overlay_mtbScale_zero_description">"Gravel or packed earth. No obstacles, wide curves, moderate slope."</string>
     <string name="overlay_mtbScale_one">"Grade 1"</string>
-    <string name="overlay_mtbScale_one_description">"Small obstacles like roots and stones. Loose soil in places, tight turns. Requires care but no special skill."</string>
+    <string name="overlay_mtbScale_one_description">"Small obstacles like roots and stones. Loose soil in places, tight turns."</string>
     <string name="overlay_mtbScale_two">"Grade 2"</string>
-    <string name="overlay_mtbScale_two_description">"Large rocks and steps. Loose soil, wide hairpin turns, steepness up to 70%. Requires some advanced skills."</string>
+    <string name="overlay_mtbScale_two_description">"Large rocks and steps. Loose soil, wide hairpin turns, steepness up to 70%."</string>
     <string name="overlay_mtbScale_three">"Grade 3"</string>
-    <string name="overlay_mtbScale_three_description">"Large boulders and roots, many hairpin turns. Slippery surface, constant concentration, and very good skills needed."</string>
+    <string name="overlay_mtbScale_three_description">"Large boulders and roots, many hairpin turns. Slippery surface."</string>
     <string name="overlay_mtbScale_four">"Grade 4"</string>
-    <string name="overlay_mtbScale_four_description">"Very steep with large boulders, roots, and tight hairpin turns. High steps, loose debris. Trials techniques necessary."</string>
+    <string name="overlay_mtbScale_four_description">"Very steep with large boulders, roots, or tight hairpin turns. High steps, loose debris."</string>
     <string name="overlay_mtbScale_five">"Grade 5"</string>
-    <string name="overlay_mtbScale_five_description">"Very steep, big boulder fields, debris, and landslides. Few Mountainbikers can ride this level."</string>
+    <string name="overlay_mtbScale_five_description">"Very steep, big boulder fields, debris, or landslides. Fallen trees."</string>
     <string name="overlay_mtbScale_six">"Grade 6"</string>
-    <string name="overlay_mtbScale_six_description">"Not rideable for MTB. Chains, metal rungs, unsecured alpine paths, >45° steepness. Falling may be lethal."</string>
+    <string name="overlay_mtbScale_six_description">"Not rideable with MTB. Chains, metal rungs, unsecured alpine paths, >45° steepness."</string>
 
 </resources>
