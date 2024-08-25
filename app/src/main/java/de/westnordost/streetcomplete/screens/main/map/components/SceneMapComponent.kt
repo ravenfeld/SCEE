@@ -92,7 +92,8 @@ class SceneMapComponent(
     private fun getSceneFilePath(): String {
         val currentNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
         val isNightMode = currentNightMode == Configuration.UI_MODE_NIGHT_YES
-        val theme = Theme.valueOf(prefs.getString(Preferences.THEME_SELECT, "SYSTEM"))
+        val themeString = prefs.getString(Preferences.THEME_SELECT, "SYSTEM")
+        val theme = Theme.valueOf(if (themeString == "AUTO") "SYSTEM" else themeString)
         val isHighContrastNightMode = theme == Theme.DARK_CONTRAST
         val offsetFix = if (prefs.getBoolean(Prefs.OFFSET_FIX, false)) "-offset-fix" else ""
         val noSatelliteLabel = if (prefs.getBoolean(Prefs.NO_SATELLITE_LABEL, false)) "-no-label" else ""
